@@ -42,6 +42,7 @@ Summary:	Servers for rsh
 Summary(pl):	Serwery dla rsh
 Group:		Applications/Networking
 Prereq:		rc-inetd
+Requires:	pam >= 0.77.3
 Obsoletes:	heimdal-rshd
 Obsoletes:	rsh-server
 
@@ -75,6 +76,7 @@ Group:		Applications/Networking
 Prereq:		rc-inetd
 Obsoletes:	heimdal-rlogin
 Requires:	login
+Requires:	pam >= 0.77.3
 Obsoletes:	rsh-server
 
 %description -n rlogind
@@ -105,6 +107,7 @@ Summary:	Servers for rexec
 Summary(pl):	Serwer rexec
 Group:		Applications/Networking
 Prereq:		rc-inetd
+Requires:	pam >= 0.77.3
 Obsoletes:	heimdal-rexecd
 
 %description -n rexecd
