@@ -6,10 +6,12 @@ Release:	7
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.linux.uk.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
+# Source0-md5:	65f5f28e2fe22d9ad8b17bb9a10df096
 Source1:	rexec.pamd
 Source2:	rlogin.pamd
 Source3:	%{name}.pamd
 Source4:	rexec-1.5.tar.gz
+# Source4-md5:	17c2b2fa2aed6af7e0b850673d5ef1f9
 Source5:	rlogind.inetd
 Source6:	%{name}d.inetd
 Source7:	rexec.inetd
