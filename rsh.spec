@@ -150,26 +150,26 @@ if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload
 fi
 
-%post -n rlogin
+%post -n rlogind
 if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload 1>&2
 else
 	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet sever" 1>&2
 fi
 
-%postun -n rlogin
+%postun -n rlogind
 if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload
 fi
 
-%post -n rexec
+%post -n rexecd
 if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload 1>&2
 else
 	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet sever" 1>&2
 fi
 
-%postun -n rexec
+%postun -n rexecd
 if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload
 fi
@@ -194,13 +194,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n rlogin
 %defattr(644,root,root,755)
-%attr(640,root,root) %config %verify(not size mtime md5) /etc/sysconfig/rc-inetd/rlogind
 %attr(755,root,root) %{_bindir}/rlogin
 %{_mandir}/man1/rlogin.1*
 
 %files -n rlogind
 %defattr(644,root,root,755)
 %attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/rlogin
+%attr(640,root,root) %config %verify(not size mtime md5) /etc/sysconfig/rc-inetd/rlogind
 %attr(755,root,root) %{_sbindir}/in.rlogind
 %{_mandir}/man8/in.rlogind.8*
 %{_mandir}/man8/rlogind.8*
