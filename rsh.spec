@@ -1,7 +1,8 @@
 Summary:	rsh client and rcp command
+Summary(pl):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
-Release:	5
+Release:	6
 License:	BSD
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
@@ -28,12 +29,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	heimdal-rsh
 
 %description
-The rsh package a program which allow users to run commmands on remote
-machines, login to other machines and copy files between machines.
-Package also contains rcp command
+The rsh package contains programs which allow users to run commmands
+on remote machines (rsh) and copy files between machines (rcp).
+
+%description -l pl
+Pakiet rsh zawiera program pozwalaj±cy u¿ytkownikom uruchmianie
+poleceñ na zdalnych maszynach (rsh) i kopiowanie plików miêdzy
+maszynami (rcp).
 
 %package -n rshd
 Summary:	Servers for rsh
+Summary(pl):	Serwery dla rsh
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
@@ -42,23 +48,33 @@ Obsoletes:	heimdal-rshd
 Obsoletes:	rsh-server
 
 %description -n rshd
-The rshd package contains a program which allow users to run commmands
-on remote machines, login to other machines and copy files between
-machines (rsh).
+The rshd package contains a server which allow users to run commmands
+from remote machines (rsh) and copy files between machines (rcp).
+
+%description -n rshd -l pl
+Pakiet rshd zawiera serwer pozwalaj±cy u¿ytkownikom uruchamiaæ
+polecenia ze zdalnych maszyn (rsh) oraz kopiowaæ pliki miêdzy
+maszynami (rcp).
 
 %package -n rlogin
 Summary:	rlogin client
+Summary(pl):	Klient rlogin
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Obsoletes:	heimdal-rlogin
 
 %description -n rlogin
-The rlogin package contains a program which allow users to login
-on remote machines (rlogin).
+The rlogin package contains a program which allow users to login on
+remote machines (rlogin).
+
+%description -n rlogin -l pl
+Pakiet rlogin zawiera program pozwalaj±cy u¿ytkownikom na logowanie
+siê na zdalne maszyny (rlogin).
 
 %package -n rlogind
 Summary:	Servers for rlogin
+Summary(pl):	Serwer rlogin
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
@@ -68,11 +84,16 @@ Requires:	login
 Obsoletes:	rsh-server
 
 %description -n rlogind
-The rlogind package contains a program which allow users to login
-on remote machines.
+The rlogind package contains a server which allow users to login from
+remote machines.
+
+%description -n rlogind -l pl
+Pakiet rlogind zawiera serwer pozwalaj±cy u¿ytkownikom logowaæ siê ze
+zdalnych maszyn.
 
 %package -n rexec
 Summary:	rexec client
+Summary(pl):	Klient rexec
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
@@ -81,10 +102,15 @@ Obsoletes:	rsh-server
 
 %description -n rexec
 The rexec package contains a program which allow users to execute
-commnad on remote machines (rexec).
+programs on remote machines (rexec).
+
+%description -n rexec -l pl
+Pakiet rexec zawiera program pozwalaj±cy u¿ytkownikom uruchamiaæ
+programy na zdalnych maszynach (rexec).
 
 %package -n rexecd
 Summary:	Servers for rexec
+Summary(pl):	Serwer rexec
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
@@ -93,7 +119,11 @@ Obsoletes:	heimdal-rexecd
 
 %description -n rexecd
 The rexecd package contains a server which allow users to execute
-commnad on remote machines (rexec).
+programs from remote machines (rexec).
+
+%description -n rexecd -l pl
+Pakiet rexecd zawiera serwer pozwalaj±cy u¿ytkownikom uruchamianie
+programów ze zdalnych maszyn (rexec).
 
 %prep
 %setup -q -n netkit-rsh-0.17 -a4
@@ -138,6 +168,9 @@ echo ".so in.rexecd.8" >$RPM_BUILD_ROOT%{_mandir}/man8/rexecd.8
 echo ".so in.rlogind.8" >$RPM_BUILD_ROOT%{_mandir}/man8/rlogind.8
 echo ".so in.rshd.8" >$RPM_BUILD_ROOT%{_mandir}/man8/rshd.8
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post -n rshd
 if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload 1>&2
@@ -173,9 +206,6 @@ fi
 if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload
 fi
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
