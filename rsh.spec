@@ -5,7 +5,7 @@ Version:	0.17
 Release:	9
 License:	BSD
 Group:		Applications/Networking
-Source0:	ftp://ftp.linux.uk.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
 # Source0-md5:	65f5f28e2fe22d9ad8b17bb9a10df096
 Source1:	rexec.pamd
 Source2:	rlogin.pamd
