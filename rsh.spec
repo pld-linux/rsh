@@ -9,6 +9,8 @@ Source1:	rexec.pamd
 Source2:	rlogin.pamd
 Source3:	rsh.pamd
 Source4:	rexec-1.5.tar.gz
+Source5:	rlogind.inetd
+Source6:	rshd.inetd
 Patch0:		netkit-rsh-0.16-patch1.gz
 Patch1:		netkit-rsh-sectty.patch
 Patch2:		netkit-rsh-rexec.patch
@@ -61,6 +63,7 @@ rm -f rexec/rexec
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/etc/pam.d,%{_bindir},%{_sbindir},%{_mandir}/man{1,8}}
+install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
 
 %{__make} install \
 	INSTALLROOT=$RPM_BUILD_ROOT \
@@ -69,6 +72,8 @@ install -d $RPM_BUILD_ROOT{/etc/pam.d,%{_bindir},%{_sbindir},%{_mandir}/man{1,8}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/pam.d/rexec
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/rlogin
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/pam.d/rsh
+install %{SOURCE5} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/rlogind
+install %{SOURCE6} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/rshd
 
 mv -f $RPM_BUILD_ROOT%{_mandir}/rexec* $RPM_BUILD_ROOT%{_mandir}/man1/
 
@@ -90,6 +95,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/rsh
 %attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/rlogin
 %attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/rexec
+%attr(640,root,root) %config %verify(not size mtime md5) /etc/sysconfig/rc-inetd/rlogind
+%attr(640,root,root) %config %verify(not size mtime md5) /etc/sysconfig/rc-inetd/rshd
 %attr(755,root,root) %{_bindir}/rcp
 %attr(755,root,root) %{_bindir}/rexec
 %attr(755,root,root) %{_bindir}/rlogin
