@@ -1,0 +1,8 @@
+SERVICE_NAME=exec
+SOCK_TYPE=stream
+PROTOCOL=tcp
+PORT=512
+FLAGS=nowait
+USER=root
+SERVER=tcpd
+DAEMON=/usr/sbin/in.rexecd
