@@ -64,9 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-/etc/pam.d/rsh
-/etc/pam.d/rlogin
-/etc/pam.d/rexec
+%attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/rsh
+%attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/rlogin
+%attr(640,root,root) %config %verify(not size mtime md5) /etc/pam.d/rexec
 %attr(755,root,root) %{_bindir}/rcp
 %attr(755,root,root) %{_bindir}/rexec
 %attr(755,root,root) %{_bindir}/rlogin
