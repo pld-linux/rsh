@@ -1,6 +1,7 @@
 SERVICE_NAME=login
 SOCK_TYPE=stream
 PROTOCOL=tcp
+PORT=513
 FLAGS=nowait
 USER=root
 SERVER=tcpd
