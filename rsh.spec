@@ -33,7 +33,7 @@ The rsh package contains programs which allow users to run commmands
 on remote machines (rsh) and copy files between machines (rcp).
 
 %description -l pl
-Pakiet rsh zawiera program pozwalaj±cy u¿ytkownikom uruchamianie
+Pakiet rsh zawiera program pozwalaj±cy u¿ytkownikom na uruchamianie
 poleceñ na zdalnych maszynach (rsh) i kopiowanie plików miêdzy
 maszynami (rcp).
 
@@ -115,11 +115,11 @@ The rexecd package contains a server which allow users to execute
 programs from remote machines (rexec).
 
 %description -n rexecd -l pl
-Pakiet rexecd zawiera serwer pozwalaj±cy u¿ytkownikom uruchamianie
+Pakiet rexecd zawiera serwer pozwalaj±cy u¿ytkownikom na uruchamianie
 programów ze zdalnych maszyn (rexec).
 
 %prep
-%setup -q -n netkit-rsh-0.17 -a4
+%setup -q -n netkit-rsh-%{version} -a4
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -134,8 +134,10 @@ programów ze zdalnych maszyn (rexec).
 rm -f rexec/rexec
 
 %build
-./configure --with-c-compiler=%{__cc}
-%{__make} CFLAGS="%{rpmcflags}"
+./configure \
+	--with-c-compiler=%{__cc}
+%{__make} \
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
