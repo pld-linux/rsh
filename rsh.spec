@@ -2,7 +2,7 @@ Summary:	rsh client and rcp command
 Summary(pl):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
-Release:	7
+Release:	8
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.linux.uk.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
