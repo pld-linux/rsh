@@ -40,16 +40,16 @@ machines.
 %patch4 -p1
 
 %build
-make RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
+%{__make} RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
 
-make -C rexec-1.4
+%{__make} -C rexec-1.4
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/etc/pam.d,%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8}}
-make INSTALLROOT=$RPM_BUILD_ROOT install
+%{__make} INSTALLROOT=$RPM_BUILD_ROOT install
 
-make INSTALLROOT=$RPM_BUILD_ROOT install -C rexec-1.4
+%{__make} INSTALLROOT=$RPM_BUILD_ROOT install -C rexec-1.4
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/pam.d/rexec
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/rlogin
