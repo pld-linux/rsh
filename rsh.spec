@@ -2,7 +2,7 @@ Summary:	rsh client and rcp command
 Summary(pl):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
-Release:	6
+Release:	7
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.linux.uk.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
@@ -197,8 +197,8 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/rsh
-%attr(755,root,root) %{_bindir}/rcp
+%attr(4755,root,root) %{_bindir}/rsh
+%attr(4755,root,root) %{_bindir}/rcp
 %{_mandir}/man1/rsh.1*
 %{_mandir}/man1/rcp.1*
 
@@ -212,7 +212,7 @@ fi
 
 %files -n rlogin
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/rlogin
+%attr(4755,root,root) %{_bindir}/rlogin
 %{_mandir}/man1/rlogin.1*
 
 %files -n rlogind
