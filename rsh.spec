@@ -1,7 +1,7 @@
 Summary:	Clients and servers for remote access commands (rsh, rlogin, rcp).
 Name:		rsh
 Version:	0.17
-Release:	1
+Release:	2
 Copyright:	BSD
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
@@ -20,7 +20,7 @@ Patch4:		netkit-rsh-jbj2.patch
 Patch5:		netkit-rsh-pam-link.patch
 Patch6:		netkit-rsh-prompt.patch
 Patch7:		netkit-rsh-rlogin=rsh.patch
-Requires:	inetd, pam >= 0.59
+Requires:	inetdaemon, pam >= 0.59
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
