@@ -15,7 +15,7 @@ Patch2:		netkit-rsh-0.10-sectty.patch
 Patch3:		netkit-rsh-0.10-rexec.patch
 Patch4:		netkit-rsh-install.patch
 Requires:	inetd, pam >= 0.59
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The rsh package contains a set of programs which allow users to run
