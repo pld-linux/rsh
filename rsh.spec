@@ -1,19 +1,25 @@
 Summary:	Clients and servers for remote access commands (rsh, rlogin, rcp).
 Name:		rsh
-Version:	0.10
-Release:	26
+Version:	0.16.1
+Release:	1
 Copyright:	BSD
 Group:		Applications/Internet
-Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/daemons/netkit-%{name}-%{version}.tar.gz
+Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/daemons/netkit-%{name}-0.16.tar.gz
 Source1:	rexec.pamd
 Source2:	rlogin.pamd
 Source3:	rsh.pamd
-Source4:	rexec-1.4.tar.gz
-Patch0:		netkit-rsh-0.10-misc.patch
-Patch1:		netkit-rsh-0.10-newpam.patch
-Patch2:		netkit-rsh-0.10-sectty.patch
-Patch3:		netkit-rsh-0.10-rexec.patch
+Source4:	rexec-1.5.tar.gz
+Patch0:		netkit-rsh-0.16-patch1.gz
+Patch1:		netkit-rsh-sectty.patch
+Patch2:		netkit-rsh-rexec.patch
+Patch3:		netkit-rsh-stdarg.patch
 Patch4:		netkit-rsh-install.patch
+Patch5:		netkit-rsh-pamfix.patch
+Patch6:		netkit-rsh-jbj2.patch
+Patch7:		netkit-rsh-jbj3.patch
+Patch8:		netkit-rsh-pam-link.patch
+Patch9:		netkit-rsh-prompt.patch
+Patch10:	netkit-rsh-rlogin=rsh.patch
 Requires:	inetd, pam >= 0.59
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,28 +38,45 @@ The rsh package should be installed to enable remote access to other
 machines.
 
 %prep
-%setup -q -n netkit-rsh-0.10 -a 4
+%setup -q -n netkit-rsh-0.16 -a4
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+
+# No, I don't know what this is doing in the tarball.
+rm -f rexec/rexec
 
 %build
-%{__make} RPM_OPT_FLAGS="$RPM_OPT_FLAGS"
-
-%{__make} -C rexec-1.4
+./configure
+%{__make} CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/etc/pam.d,%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8}}
-%{__make} INSTALLROOT=$RPM_BUILD_ROOT install
+install -d $RPM_BUILD_ROOT{/etc/pam.d,%{_bindir},%{_sbindir},%{_mandir}/man{1,8}}
 
-%{__make} INSTALLROOT=$RPM_BUILD_ROOT install -C rexec-1.4
+%{__make} install \
+	INSTALLROOT=$RPM_BUILD_ROOT \
+	MANDIR=%{_mandir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/pam.d/rexec
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/rlogin
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/pam.d/rsh
+
+mv -f $RPM_BUILD_ROOT%{_mandir}/rexec* $RPM_BUILD_ROOT%{_mandir}/man1/
+
+rm -f $RPM_BUILD_ROOT%{_mandir}/man8/{rexec,rlogin,rsh}d.8
+
+echo ".so in.rexecd.8" >$RPM_BUILD_ROOT%{_mandir}/man8/rexecd.8
+echo ".so in.rlogind.8" >$RPM_BUILD_ROOT%{_mandir}/man8/rlogind.8
+echo ".so in.rshd.8" >$RPM_BUILD_ROOT%{_mandir}/man8/rshd.8
 
 strip --strip-unneeded $RPM_BUILD_ROOT{%{_bindir},%{_sbindir}}/* || :
 
