@@ -1,7 +1,7 @@
 Summary:	rsh client and rcp command
 Name:		rsh
 Version:	0.17
-Release:	3
+Release:	4
 License:	BSD
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
