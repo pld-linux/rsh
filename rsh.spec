@@ -33,7 +33,7 @@ The rsh package contains programs which allow users to run commmands
 on remote machines (rsh) and copy files between machines (rcp).
 
 %description -l pl
-Pakiet rsh zawiera program pozwalaj±cy u¿ytkownikom uruchmianie
+Pakiet rsh zawiera program pozwalaj±cy u¿ytkownikom uruchamianie
 poleceñ na zdalnych maszynach (rsh) i kopiowanie plików miêdzy
 maszynami (rcp).
 
