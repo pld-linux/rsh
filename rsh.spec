@@ -3,7 +3,8 @@ Name:		rsh
 Version:	0.16.1
 Release:	1
 Copyright:	BSD
-Group:		Applications/Internet
+Group:		Applications/Networking
+Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/daemons/netkit-%{name}-0.16.tar.gz
 Source1:	rexec.pamd
 Source2:	rlogin.pamd
@@ -86,6 +87,18 @@ echo ".so in.rshd.8" >$RPM_BUILD_ROOT%{_mandir}/man8/rshd.8
 strip --strip-unneeded $RPM_BUILD_ROOT{%{_bindir},%{_sbindir}}/* || :
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,8}/*
+
+%post
+if [ -f /var/lock/subsys/rc-inetd ]; then
+	/etc/rc.d/init.d/rc-inetd reload 1>&2
+else
+	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet sever" 1>&2
+fi
+
+%postun
+if [ -f /var/lock/subsys/rc-inetd ]; then
+	/etc/rc.d/init.d/rc-inetd reload
+fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
