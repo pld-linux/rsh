@@ -11,4 +11,4 @@ account		required	/lib/security/pam_time.so
 account		required	/lib/security/pam_unix.so
 session		required	/lib/security/pam_unix.so
 session		required	/lib/security/pam_env.so
-session		required	/lib/security/pam_limits.so
+session		required	/lib/security/pam_limits.so change_uid
