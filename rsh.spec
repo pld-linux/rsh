@@ -1,7 +1,7 @@
 Summary:	Clients and servers for remote access commands (rsh, rlogin, rcp).
 Name:		rsh
 Version:	0.17
-Release:	0
+Release:	1
 Copyright:	BSD
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
@@ -16,12 +16,10 @@ Patch0:		netkit-rsh-sectty.patch
 Patch1:		netkit-rsh-rexec.patch
 Patch2:		netkit-rsh-stdarg.patch
 Patch3:		netkit-rsh-install.patch
-Patch4:		netkit-rsh-pamfix.patch
-Patch5:		netkit-rsh-jbj2.patch
-Patch6:		netkit-rsh-jbj3.patch
-Patch7:		netkit-rsh-pam-link.patch
-Patch8:		netkit-rsh-prompt.patch
-Patch9:		netkit-rsh-rlogin=rsh.patch
+Patch4:		netkit-rsh-jbj2.patch
+Patch5:		netkit-rsh-pam-link.patch
+Patch6:		netkit-rsh-prompt.patch
+Patch7:		netkit-rsh-rlogin=rsh.patch
 Requires:	inetd, pam >= 0.59
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -45,20 +43,16 @@ machines.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-# Should be removed (?)
-# %patch4 -p1
+%patch4 -p1
 %patch5 -p1
-# Should be removed (?)
-# %patch6 -p1
+%patch6 -p1
 %patch7 -p1
-%patch8 -p1
-%patch9 -p1
 
 # No, I don't know what this is doing in the tarball.
 rm -f rexec/rexec
 
 %build
-./configure
+./configure --with-c-compiler=gcc
 %{__make} CFLAGS="$RPM_OPT_FLAGS"
 
 %install
