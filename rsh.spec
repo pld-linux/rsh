@@ -65,6 +65,7 @@ Group(pl):	Aplikacje/Sieciowe
 Prereq:		rc-inetd
 Obsoletes:	heimdal-rlogin
 Requires:	login
+Obsoletes:	rsh-server
 
 %description -n rlogind
 The rlogind package contains a program which allow users to login
@@ -76,6 +77,7 @@ Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Obsoletes:	heimdal-rexec
+Obsoletes:	rsh-server
 
 %description -n rexec
 The rexec package contains a program which allow users to execute
