@@ -5,8 +5,6 @@ Version:	0.17
 Release:	6
 License:	BSD
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Source0:	ftp://ftp.linux.uk.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
 Source1:	rexec.pamd
 Source2:	rlogin.pamd
@@ -41,8 +39,6 @@ maszynami (rcp).
 Summary:	Servers for rsh
 Summary(pl):	Serwery dla rsh
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Prereq:		rc-inetd
 Obsoletes:	heimdal-rshd
 Obsoletes:	rsh-server
@@ -60,8 +56,6 @@ maszynami (rcp).
 Summary:	rlogin client
 Summary(pl):	Klient rlogin
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Obsoletes:	heimdal-rlogin
 
 %description -n rlogin
@@ -76,8 +70,6 @@ siê na zdalne maszyny (rlogin).
 Summary:	Servers for rlogin
 Summary(pl):	Serwer rlogin
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Prereq:		rc-inetd
 Obsoletes:	heimdal-rlogin
 Requires:	login
@@ -95,8 +87,6 @@ zdalnych maszyn.
 Summary:	rexec client
 Summary(pl):	Klient rexec
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Obsoletes:	heimdal-rexec
 Obsoletes:	rsh-server
 
@@ -112,8 +102,6 @@ programy na zdalnych maszynach (rexec).
 Summary:	Servers for rexec
 Summary(pl):	Serwer rexec
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Prereq:		rc-inetd
 Obsoletes:	heimdal-rexecd
 
