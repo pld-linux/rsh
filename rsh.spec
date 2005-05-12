@@ -2,7 +2,7 @@ Summary:	rsh client and rcp command
 Summary(pl):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
-Release:	10
+Release:	11
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
@@ -25,6 +25,7 @@ Patch6:		netkit-%{name}-prompt.patch
 Patch7:		netkit-%{name}-rlogin=rsh.patch
 Patch8:		netkit-%{name}-nokrb.patch
 BuildRequires:	pam-devel
+Requires:	pam >= 0.79.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	heimdal-rsh
 
