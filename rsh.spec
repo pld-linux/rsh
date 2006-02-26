@@ -136,8 +136,9 @@ rm -f rexec/rexec
 
 %build
 ./configure \
-	--with-c-compiler=%{__cc}
+	--with-c-compiler="%{__cc}"
 %{__make} \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}"
 
 %install
