@@ -25,9 +25,10 @@ Patch6:		netkit-%{name}-prompt.patch
 Patch7:		netkit-%{name}-rlogin=rsh.patch
 Patch8:		netkit-%{name}-nokrb.patch
 BuildRequires:	pam-devel
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	pam >= 0.79.0
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	heimdal-rsh
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The rsh package contains programs which allow users to run commmands
@@ -42,8 +43,8 @@ maszynami (rcp).
 Summary:	Servers for rsh
 Summary(pl):	Serwery dla rsh
 Group:		Applications/Networking
-Prereq:		rc-inetd
 Requires:	pam >= 0.77.3
+Requires:	rc-inetd
 Obsoletes:	heimdal-rshd
 Obsoletes:	rsh-server
 
@@ -74,10 +75,10 @@ siê na zdalne maszyny (rlogin).
 Summary:	Servers for rlogin
 Summary(pl):	Serwer rlogin
 Group:		Applications/Networking
-Prereq:		rc-inetd
-Obsoletes:	heimdal-rlogin
 Requires:	login
 Requires:	pam >= 0.77.3
+Requires:	rc-inetd
+Obsoletes:	heimdal-rlogin
 Obsoletes:	rsh-server
 
 %description -n rlogind
@@ -107,8 +108,8 @@ programy na zdalnych maszynach (rexec).
 Summary:	Servers for rexec
 Summary(pl):	Serwer rexec
 Group:		Applications/Networking
-Prereq:		rc-inetd
 Requires:	pam >= 0.77.3
+Requires:	rc-inetd
 Obsoletes:	heimdal-rexecd
 
 %description -n rexecd
@@ -169,39 +170,27 @@ echo ".so in.rshd.8" >$RPM_BUILD_ROOT%{_mandir}/man8/rshd.8
 rm -rf $RPM_BUILD_ROOT
 
 %post -n rshd
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun -n rshd
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %post -n rlogind
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun -n rlogind
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %post -n rexecd
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun -n rexecd
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %files
