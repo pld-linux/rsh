@@ -2,7 +2,7 @@ Summary:	rsh client and rcp command
 Summary(pl):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
-Release:	11
+Release:	12
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
@@ -26,7 +26,7 @@ Patch7:		netkit-%{name}-rlogin=rsh.patch
 Patch8:		netkit-%{name}-nokrb.patch
 BuildRequires:	pam-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
-Requires:	pam >= 0.79.0
+Requires:	pam >= 0.99.7.1
 Obsoletes:	heimdal-rsh
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +43,7 @@ maszynami (rcp).
 Summary:	Servers for rsh
 Summary(pl):	Serwery dla rsh
 Group:		Applications/Networking
-Requires:	pam >= 0.77.3
+Requires:	pam >= 0.99.7.1
 Requires:	rc-inetd
 Obsoletes:	heimdal-rshd
 Obsoletes:	rsh-server
@@ -76,7 +76,7 @@ Summary:	Servers for rlogin
 Summary(pl):	Serwer rlogin
 Group:		Applications/Networking
 Requires:	login
-Requires:	pam >= 0.77.3
+Requires:	pam >= 0.99.7.1
 Requires:	rc-inetd
 Obsoletes:	heimdal-rlogin
 Obsoletes:	rsh-server
@@ -108,7 +108,7 @@ programy na zdalnych maszynach (rexec).
 Summary:	Servers for rexec
 Summary(pl):	Serwer rexec
 Group:		Applications/Networking
-Requires:	pam >= 0.77.3
+Requires:	pam >= 0.99.7.1
 Requires:	rc-inetd
 Obsoletes:	heimdal-rexecd
 
