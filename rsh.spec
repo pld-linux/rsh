@@ -1,5 +1,5 @@
 Summary:	rsh client and rcp command
-Summary(pl.UTF-8):   Klient rsh i polecenie rcp
+Summary(pl.UTF-8):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
 Release:	12
@@ -41,7 +41,7 @@ maszynami (rcp).
 
 %package -n rshd
 Summary:	Servers for rsh
-Summary(pl.UTF-8):   Serwery dla rsh
+Summary(pl.UTF-8):	Serwery dla rsh
 Group:		Applications/Networking
 Requires:	pam >= 0.99.7.1
 Requires:	rc-inetd
@@ -59,7 +59,7 @@ maszynami (rcp).
 
 %package -n rlogin
 Summary:	rlogin client
-Summary(pl.UTF-8):   Klient rlogin
+Summary(pl.UTF-8):	Klient rlogin
 Group:		Applications/Networking
 Obsoletes:	heimdal-rlogin
 
@@ -73,7 +73,7 @@ się na zdalne maszyny (rlogin).
 
 %package -n rlogind
 Summary:	Servers for rlogin
-Summary(pl.UTF-8):   Serwer rlogin
+Summary(pl.UTF-8):	Serwer rlogin
 Group:		Applications/Networking
 Requires:	login
 Requires:	pam >= 0.99.7.1
@@ -91,7 +91,7 @@ zdalnych maszyn.
 
 %package -n rexec
 Summary:	rexec client
-Summary(pl.UTF-8):   Klient rexec
+Summary(pl.UTF-8):	Klient rexec
 Group:		Applications/Networking
 Obsoletes:	heimdal-rexec
 Obsoletes:	rsh-server
@@ -106,7 +106,7 @@ programy na zdalnych maszynach (rexec).
 
 %package -n rexecd
 Summary:	Servers for rexec
-Summary(pl.UTF-8):   Serwer rexec
+Summary(pl.UTF-8):	Serwer rexec
 Group:		Applications/Networking
 Requires:	pam >= 0.99.7.1
 Requires:	rc-inetd
