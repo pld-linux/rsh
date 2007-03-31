@@ -2,7 +2,7 @@ Summary:	rsh client and rcp command
 Summary(pl.UTF-8):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
-Release:	12
+Release:	13
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
@@ -28,6 +28,7 @@ BuildRequires:	pam-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	pam >= 0.99.7.1
 Obsoletes:	heimdal-rsh
+Obsoletes:	krb5-rsh
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -46,6 +47,7 @@ Group:		Applications/Networking
 Requires:	pam >= 0.99.7.1
 Requires:	rc-inetd
 Obsoletes:	heimdal-rshd
+Obsoletes:	krb5-kshd
 Obsoletes:	rsh-server
 
 %description -n rshd
@@ -62,6 +64,7 @@ Summary:	rlogin client
 Summary(pl.UTF-8):	Klient rlogin
 Group:		Applications/Networking
 Obsoletes:	heimdal-rlogin
+Obsoletes:	krb5-rlogin
 
 %description -n rlogin
 The rlogin package contains a program which allow users to login on
@@ -79,6 +82,7 @@ Requires:	login
 Requires:	pam >= 0.99.7.1
 Requires:	rc-inetd
 Obsoletes:	heimdal-rlogin
+Obsoletes:	krb5-klogind
 Obsoletes:	rsh-server
 
 %description -n rlogind
@@ -93,7 +97,6 @@ zdalnych maszyn.
 Summary:	rexec client
 Summary(pl.UTF-8):	Klient rexec
 Group:		Applications/Networking
-Obsoletes:	heimdal-rexec
 Obsoletes:	rsh-server
 
 %description -n rexec
@@ -110,7 +113,6 @@ Summary(pl.UTF-8):	Serwer rexec
 Group:		Applications/Networking
 Requires:	pam >= 0.99.7.1
 Requires:	rc-inetd
-Obsoletes:	heimdal-rexecd
 
 %description -n rexecd
 The rexecd package contains a server which allow users to execute
