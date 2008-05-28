@@ -26,8 +26,8 @@ Patch7:		netkit-%{name}-rlogin=rsh.patch
 Patch8:		netkit-%{name}-nokrb.patch
 BuildRequires:	pam-devel
 Requires:	pam >= 0.79.0
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	heimdal-rsh
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The rsh package contains programs which allow users to run commmands
@@ -42,8 +42,8 @@ maszynami (rcp).
 Summary:	Servers for rsh
 Summary(pl.UTF-8):	Serwery dla rsh
 Group:		Applications/Networking
-Prereq:		rc-inetd
 Requires:	pam >= 0.77.3
+Requires:	rc-inetd
 Obsoletes:	heimdal-rshd
 Obsoletes:	rsh-server
 
@@ -74,10 +74,10 @@ się na zdalne maszyny (rlogin).
 Summary:	Servers for rlogin
 Summary(pl.UTF-8):	Serwer rlogin
 Group:		Applications/Networking
-Prereq:		rc-inetd
-Obsoletes:	heimdal-rlogin
 Requires:	login
 Requires:	pam >= 0.77.3
+Requires:	rc-inetd
+Obsoletes:	heimdal-rlogin
 Obsoletes:	rsh-server
 
 %description -n rlogind
@@ -107,8 +107,8 @@ programy na zdalnych maszynach (rexec).
 Summary:	Servers for rexec
 Summary(pl.UTF-8):	Serwer rexec
 Group:		Applications/Networking
-Prereq:		rc-inetd
 Requires:	pam >= 0.77.3
+Requires:	rc-inetd
 Obsoletes:	heimdal-rexecd
 
 %description -n rexecd
@@ -120,7 +120,7 @@ Pakiet rexecd zawiera serwer pozwalający użytkownikom na uruchamianie
 programów ze zdalnych maszyn (rexec).
 
 %prep
-%setup -q -n netkit-rsh-%{version} -a4
+%setup -q -n netkit-%{name}-%{version} -a4
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -212,8 +212,8 @@ fi
 
 %files -n rshd
 %defattr(644,root,root,755)
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/pam.d/rsh
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/rc-inetd/rshd
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/rsh
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/rshd
 %attr(755,root,root) %{_sbindir}/in.rshd
 %{_mandir}/man8/in.rshd.8*
 %{_mandir}/man8/rshd.8*
@@ -225,8 +225,8 @@ fi
 
 %files -n rlogind
 %defattr(644,root,root,755)
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/pam.d/rlogin
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/rc-inetd/rlogind
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/rlogin
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/rlogind
 %attr(755,root,root) %{_sbindir}/in.rlogind
 %{_mandir}/man8/in.rlogind.8*
 %{_mandir}/man8/rlogind.8*
@@ -238,8 +238,8 @@ fi
 
 %files -n rexecd
 %defattr(644,root,root,755)
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/pam.d/rexec
-%attr(640,root,root) %config %verify(not size mtime md5) /etc/sysconfig/rc-inetd/rexec
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/rexec
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/rexec
 %attr(755,root,root) %{_sbindir}/in.rexecd
 %{_mandir}/man8/in.rexecd.8*
 %{_mandir}/man8/rexecd.8*
