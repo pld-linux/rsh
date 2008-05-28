@@ -1,3 +1,6 @@
+# TODO
+# fix:
+rexecd.c:226: error: 'ARG_MAX' undeclared (first use in this function)
 Summary:	rsh client and rcp command
 Summary(pl.UTF-8):	Klient rsh i polecenie rcp
 Name:		rsh
