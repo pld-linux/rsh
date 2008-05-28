@@ -2,7 +2,7 @@ Summary:	rsh client and rcp command
 Summary(pl.UTF-8):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
-Release:	11
+Release:	22
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
@@ -25,8 +25,10 @@ Patch6:		netkit-%{name}-prompt.patch
 Patch7:		netkit-%{name}-rlogin=rsh.patch
 Patch8:		netkit-%{name}-nokrb.patch
 BuildRequires:	pam-devel
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	pam >= 0.79.0
 Obsoletes:	heimdal-rsh
+Obsoletes:	krb5-rsh
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,6 +47,7 @@ Group:		Applications/Networking
 Requires:	pam >= 0.77.3
 Requires:	rc-inetd
 Obsoletes:	heimdal-rshd
+Obsoletes:	krb5-kshd
 Obsoletes:	rsh-server
 
 %description -n rshd
@@ -61,6 +64,7 @@ Summary:	rlogin client
 Summary(pl.UTF-8):	Klient rlogin
 Group:		Applications/Networking
 Obsoletes:	heimdal-rlogin
+Obsoletes:	krb5-rlogin
 
 %description -n rlogin
 The rlogin package contains a program which allow users to login on
@@ -78,6 +82,7 @@ Requires:	login
 Requires:	pam >= 0.77.3
 Requires:	rc-inetd
 Obsoletes:	heimdal-rlogin
+Obsoletes:	krb5-klogind
 Obsoletes:	rsh-server
 
 %description -n rlogind
@@ -92,7 +97,6 @@ zdalnych maszyn.
 Summary:	rexec client
 Summary(pl.UTF-8):	Klient rexec
 Group:		Applications/Networking
-Obsoletes:	heimdal-rexec
 Obsoletes:	rsh-server
 
 %description -n rexec
@@ -109,7 +113,6 @@ Summary(pl.UTF-8):	Serwer rexec
 Group:		Applications/Networking
 Requires:	pam >= 0.77.3
 Requires:	rc-inetd
-Obsoletes:	heimdal-rexecd
 
 %description -n rexecd
 The rexecd package contains a server which allow users to execute
@@ -136,9 +139,11 @@ rm -f rexec/rexec
 
 %build
 ./configure \
-	--with-c-compiler=%{__cc}
+	--with-c-compiler="%{__cc}"
 %{__make} \
-	CFLAGS="%{rpmcflags}"
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags}" \
+	LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -168,39 +173,27 @@ echo ".so in.rshd.8" >$RPM_BUILD_ROOT%{_mandir}/man8/rshd.8
 rm -rf $RPM_BUILD_ROOT
 
 %post -n rshd
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun -n rshd
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %post -n rlogind
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun -n rlogind
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %post -n rexecd
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun -n rexecd
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %files
