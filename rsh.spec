@@ -1,5 +1,5 @@
 Summary:	rsh client and rcp command
-Summary(pl):	Klient rsh i polecenie rcp
+Summary(pl.UTF-8):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
 Release:	11
@@ -33,14 +33,14 @@ Obsoletes:	heimdal-rsh
 The rsh package contains programs which allow users to run commmands
 on remote machines (rsh) and copy files between machines (rcp).
 
-%description -l pl
-Pakiet rsh zawiera program pozwalaj±cy u¿ytkownikom na uruchamianie
-poleceñ na zdalnych maszynach (rsh) i kopiowanie plików miêdzy
+%description -l pl.UTF-8
+Pakiet rsh zawiera program pozwalajÄ…cy uÅ¼ytkownikom na uruchamianie
+poleceÅ„ na zdalnych maszynach (rsh) i kopiowanie plikÃ³w miÄ™dzy
 maszynami (rcp).
 
 %package -n rshd
 Summary:	Servers for rsh
-Summary(pl):	Serwery dla rsh
+Summary(pl.UTF-8):	Serwery dla rsh
 Group:		Applications/Networking
 Prereq:		rc-inetd
 Requires:	pam >= 0.77.3
@@ -51,14 +51,14 @@ Obsoletes:	rsh-server
 The rshd package contains a server which allow users to run commmands
 from remote machines (rsh) and copy files between machines (rcp).
 
-%description -n rshd -l pl
-Pakiet rshd zawiera serwer pozwalaj±cy u¿ytkownikom uruchamiaæ
-polecenia ze zdalnych maszyn (rsh) oraz kopiowaæ pliki miêdzy
+%description -n rshd -l pl.UTF-8
+Pakiet rshd zawiera serwer pozwalajÄ…cy uÅ¼ytkownikom uruchamiaÄ‡
+polecenia ze zdalnych maszyn (rsh) oraz kopiowaÄ‡ pliki miÄ™dzy
 maszynami (rcp).
 
 %package -n rlogin
 Summary:	rlogin client
-Summary(pl):	Klient rlogin
+Summary(pl.UTF-8):	Klient rlogin
 Group:		Applications/Networking
 Obsoletes:	heimdal-rlogin
 
@@ -66,13 +66,13 @@ Obsoletes:	heimdal-rlogin
 The rlogin package contains a program which allow users to login on
 remote machines (rlogin).
 
-%description -n rlogin -l pl
-Pakiet rlogin zawiera program pozwalaj±cy u¿ytkownikom na logowanie
-siê na zdalne maszyny (rlogin).
+%description -n rlogin -l pl.UTF-8
+Pakiet rlogin zawiera program pozwalajÄ…cy uÅ¼ytkownikom na logowanie
+siÄ™ na zdalne maszyny (rlogin).
 
 %package -n rlogind
 Summary:	Servers for rlogin
-Summary(pl):	Serwer rlogin
+Summary(pl.UTF-8):	Serwer rlogin
 Group:		Applications/Networking
 Prereq:		rc-inetd
 Obsoletes:	heimdal-rlogin
@@ -84,13 +84,13 @@ Obsoletes:	rsh-server
 The rlogind package contains a server which allow users to login from
 remote machines.
 
-%description -n rlogind -l pl
-Pakiet rlogind zawiera serwer pozwalaj±cy u¿ytkownikom logowaæ siê ze
+%description -n rlogind -l pl.UTF-8
+Pakiet rlogind zawiera serwer pozwalajÄ…cy uÅ¼ytkownikom logowaÄ‡ siÄ™ ze
 zdalnych maszyn.
 
 %package -n rexec
 Summary:	rexec client
-Summary(pl):	Klient rexec
+Summary(pl.UTF-8):	Klient rexec
 Group:		Applications/Networking
 Obsoletes:	heimdal-rexec
 Obsoletes:	rsh-server
@@ -99,13 +99,13 @@ Obsoletes:	rsh-server
 The rexec package contains a program which allow users to execute
 programs on remote machines (rexec).
 
-%description -n rexec -l pl
-Pakiet rexec zawiera program pozwalaj±cy u¿ytkownikom uruchamiaæ
+%description -n rexec -l pl.UTF-8
+Pakiet rexec zawiera program pozwalajÄ…cy uÅ¼ytkownikom uruchamiaÄ‡
 programy na zdalnych maszynach (rexec).
 
 %package -n rexecd
 Summary:	Servers for rexec
-Summary(pl):	Serwer rexec
+Summary(pl.UTF-8):	Serwer rexec
 Group:		Applications/Networking
 Prereq:		rc-inetd
 Requires:	pam >= 0.77.3
@@ -115,9 +115,9 @@ Obsoletes:	heimdal-rexecd
 The rexecd package contains a server which allow users to execute
 programs from remote machines (rexec).
 
-%description -n rexecd -l pl
-Pakiet rexecd zawiera serwer pozwalaj±cy u¿ytkownikom na uruchamianie
-programów ze zdalnych maszyn (rexec).
+%description -n rexecd -l pl.UTF-8
+Pakiet rexecd zawiera serwer pozwalajÄ…cy uÅ¼ytkownikom na uruchamianie
+programÃ³w ze zdalnych maszyn (rexec).
 
 %prep
 %setup -q -n netkit-rsh-%{version} -a4
