@@ -1,6 +1,4 @@
-# TODO
-# fix:
-rexecd.c:226: error: 'ARG_MAX' undeclared (first use in this function)
+
 Summary:	rsh client and rcp command
 Summary(pl.UTF-8):	Klient rsh i polecenie rcp
 Name:		rsh
@@ -27,8 +25,10 @@ Patch5:		netkit-%{name}-pam-link.patch
 Patch6:		netkit-%{name}-prompt.patch
 Patch7:		netkit-%{name}-rlogin=rsh.patch
 Patch8:		netkit-%{name}-nokrb.patch
+Patch9:		netkit-%{name}-auth.c.patch
 BuildRequires:	pam-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
+BuildRequires:	sed >= 4.0
 Requires:	pam >= 0.99.7.1
 Obsoletes:	heimdal-rsh
 Obsoletes:	krb5-rsh
@@ -136,6 +136,9 @@ programów ze zdalnych maszyn (rexec).
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
+
+%{__sed} -i 's/ARG_MAX/_POSIX_ARG_MAX/g' ./rshd/rshd.c ./rexecd/rexecd.c
 
 # No, I don't know what this is doing in the tarball.
 rm -f rexec/rexec

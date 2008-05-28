@@ -1,0 +1,10 @@
+--- netkit-rsh-0.17/rlogind/auth.c.old	2008-05-28 22:29:27.000000000 +0200
++++ netkit-rsh-0.17/rlogind/auth.c	2008-05-28 22:29:41.000000000 +0200
+@@ -33,6 +33,7 @@
+ 
+ #include <sys/types.h>
+ #include <pwd.h>
++#include <stddef.h>
+ 
+ #include "rlogind.h"
+ 
