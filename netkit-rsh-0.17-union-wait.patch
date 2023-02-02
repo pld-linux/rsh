@@ -1,0 +1,22 @@
+diff -ruN netkit-rsh-0.17.orig/rlogin/rlogin.c netkit-rsh-0.17/rlogin/rlogin.c
+--- netkit-rsh-0.17.orig/rlogin/rlogin.c	2016-12-21 13:25:05.138064634 -0500
++++ netkit-rsh-0.17/rlogin/rlogin.c	2016-12-21 13:34:24.172847615 -0500
+@@ -421,7 +421,7 @@
+ void
+ catch_child(int ignore)
+ {
+-	union wait status;
++	int status;
+ 	int pid;
+ 
+ 	(void)ignore;
+@@ -432,7 +432,7 @@
+ 			return;
+ 		/* if the child (reader) dies, just quit */
+ 		if (pid < 0 || (pid == childpid && !WIFSTOPPED(status)))
+-			done((int)(status.w_termsig | status.w_retcode));
++			done((int)(WTERMSIG(status) | WEXITSTATUS(status)));
+ 	}
+ 	/* NOTREACHED */
+ }
+Binary files netkit-rsh-0.17.orig/rlogin/.rlogin.c.swp and netkit-rsh-0.17/rlogin/.rlogin.c.swp differ

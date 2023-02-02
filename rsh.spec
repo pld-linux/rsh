@@ -3,7 +3,7 @@ Summary:	rsh client and rcp command
 Summary(pl.UTF-8):	Klient rsh i polecenie rcp
 Name:		rsh
 Version:	0.17
-Release:	26
+Release:	27
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/netkit-%{name}-%{version}.tar.gz
@@ -26,6 +26,7 @@ Patch6:		netkit-%{name}-prompt.patch
 Patch7:		netkit-%{name}-rlogin=rsh.patch
 Patch8:		netkit-%{name}-nokrb.patch
 Patch9:		netkit-%{name}-auth.c.patch
+Patch10:        netkit-rsh-0.17-union-wait.patch
 BuildRequires:	pam-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
@@ -137,6 +138,7 @@ programów ze zdalnych maszyn (rexec).
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %{__sed} -i 's/ARG_MAX/_POSIX_ARG_MAX/g' ./rshd/rshd.c ./rexecd/rexecd.c
 
